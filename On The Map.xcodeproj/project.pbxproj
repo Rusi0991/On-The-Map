@@ -13,6 +13,8 @@
 		57D0715D26BE099300F73517 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57D0715B26BE099300F73517 /* Main.storyboard */; };
 		57D0715F26BE099400F73517 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57D0715E26BE099400F73517 /* Assets.xcassets */; };
 		57D0716226BE099400F73517 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57D0716026BE099400F73517 /* LaunchScreen.storyboard */; };
+		57D0716C26BF06B200F73517 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0716B26BF06B200F73517 /* MapViewController.swift */; };
+		57D0717026BF07D000F73517 /* TableTabbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0716F26BF07D000F73517 /* TableTabbedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		57D0715E26BE099400F73517 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57D0716126BE099400F73517 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57D0716326BE099400F73517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57D0716B26BF06B200F73517 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		57D0716F26BF07D000F73517 /* TableTabbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTabbedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				57D0715926BE099300F73517 /* Login ViewController.swift */,
+				57D0716B26BF06B200F73517 /* MapViewController.swift */,
+				57D0716F26BF07D000F73517 /* TableTabbedViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -154,8 +160,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				57D0715A26BE099300F73517 /* Login ViewController.swift in Sources */,
+				57D0717026BF07D000F73517 /* TableTabbedViewController.swift in Sources */,
 				57D0715626BE099300F73517 /* AppDelegate.swift in Sources */,
 				57D0715826BE099300F73517 /* SceneDelegate.swift in Sources */,
+				57D0716C26BF06B200F73517 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
