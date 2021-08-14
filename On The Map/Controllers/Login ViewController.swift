@@ -20,13 +20,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         hideKeyboardWhenTappedAround()
+        
     }
 
     @IBAction func loginTapped(_ sender: Any) {
         performSegue(withIdentifier: "toTabViewController", sender: (Any).self)
+        
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
+    }
+    
+    func handleLoginResponse(success : Bool, error : Error?){
+        if success {
+            print("createSession")
+        }
     }
     
     func hideKeyboardWhenTappedAround() {
@@ -46,5 +54,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
+    
 }
 

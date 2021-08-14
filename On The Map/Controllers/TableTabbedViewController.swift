@@ -7,9 +7,10 @@
 
 import UIKit
 
-class TableTabbedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TableTabbedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
     @IBOutlet weak var tableView: UITableView!
+    var students = [StudentLocation]()
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -18,12 +19,13 @@ class TableTabbedViewController: UIViewController, UITableViewDelegate, UITableV
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableTabbedViewCell")!
-        
+        let student = students[indexPath.row]
+        cell.textLabel?.text = student.firstName + student.lastName
         return cell
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return students.count
     }
 
 }

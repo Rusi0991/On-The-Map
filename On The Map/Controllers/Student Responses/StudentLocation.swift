@@ -7,7 +7,9 @@
 
 import Foundation
 
+
 struct StudentLocation : Codable {
+    
     let objectId : String
     let uniqueKey : String
     let firstName : String

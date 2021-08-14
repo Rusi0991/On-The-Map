@@ -18,7 +18,8 @@
 		57D0717226C2030000F73517 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0717126C2030000F73517 /* InputViewController.swift */; };
 		57D0717426C33B1800F73517 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0717326C33B1800F73517 /* StudentLocation.swift */; };
 		57D0717626C3412100F73517 /* StudentLocationResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0717526C3412100F73517 /* StudentLocationResults.swift */; };
-		57D0717D26C3570A00F73517 /* StudentRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0717C26C3570A00F73517 /* StudentRequests.swift */; };
+		57D0717D26C3570A00F73517 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0717C26C3570A00F73517 /* Student.swift */; };
+		57D0717F26C88D5E00F73517 /* PublicUserDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0717E26C88D5E00F73517 /* PublicUserDataResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +36,8 @@
 		57D0717126C2030000F73517 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		57D0717326C33B1800F73517 /* StudentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 		57D0717526C3412100F73517 /* StudentLocationResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationResults.swift; sourceTree = "<group>"; };
-		57D0717C26C3570A00F73517 /* StudentRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentRequests.swift; sourceTree = "<group>"; };
+		57D0717C26C3570A00F73517 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		57D0717E26C88D5E00F73517 /* PublicUserDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicUserDataResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +75,6 @@
 				57D0716326BE099400F73517 /* Info.plist */,
 				57D0717726C34EBA00F73517 /* Student */,
 				57D0717826C3511A00F73517 /* Student Requests */,
-				57D0717926C3514700F73517 /* Student Responses */,
 				57D0716A26BE1F6F00F73517 /* Controllers */,
 				57D0716926BE1F2600F73517 /* Assets */,
 			);
@@ -104,8 +105,8 @@
 		57D0717726C34EBA00F73517 /* Student */ = {
 			isa = PBXGroup;
 			children = (
-				57D0717526C3412100F73517 /* StudentLocationResults.swift */,
-				57D0717326C33B1800F73517 /* StudentLocation.swift */,
+				57D0717C26C3570A00F73517 /* Student.swift */,
+				57D0717926C3514700F73517 /* Student Responses */,
 			);
 			name = Student;
 			path = Controllers;
@@ -114,7 +115,6 @@
 		57D0717826C3511A00F73517 /* Student Requests */ = {
 			isa = PBXGroup;
 			children = (
-				57D0717C26C3570A00F73517 /* StudentRequests.swift */,
 			);
 			path = "Student Requests";
 			sourceTree = "<group>";
@@ -122,6 +122,9 @@
 		57D0717926C3514700F73517 /* Student Responses */ = {
 			isa = PBXGroup;
 			children = (
+				57D0717326C33B1800F73517 /* StudentLocation.swift */,
+				57D0717E26C88D5E00F73517 /* PublicUserDataResponse.swift */,
+				57D0717526C3412100F73517 /* StudentLocationResults.swift */,
 			);
 			path = "Student Responses";
 			sourceTree = "<group>";
@@ -196,13 +199,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57D0717F26C88D5E00F73517 /* PublicUserDataResponse.swift in Sources */,
 				57D0715A26BE099300F73517 /* Login ViewController.swift in Sources */,
 				57D0717626C3412100F73517 /* StudentLocationResults.swift in Sources */,
 				57D0717026BF07D000F73517 /* TableTabbedViewController.swift in Sources */,
 				57D0717426C33B1800F73517 /* StudentLocation.swift in Sources */,
 				57D0715626BE099300F73517 /* AppDelegate.swift in Sources */,
 				57D0717226C2030000F73517 /* InputViewController.swift in Sources */,
-				57D0717D26C3570A00F73517 /* StudentRequests.swift in Sources */,
+				57D0717D26C3570A00F73517 /* Student.swift in Sources */,
 				57D0715826BE099300F73517 /* SceneDelegate.swift in Sources */,
 				57D0716C26BF06B200F73517 /* MapViewController.swift in Sources */,
 			);
