@@ -8,12 +8,13 @@
 import Foundation
 class Student {
     
+    let accountId = ""
+    let sessionId = ""
     
     enum Endpoints{
         static let base = "https://onthemap-api.udacity.com/v1"
         case studentLocation
         case publicUserData
-        
         
         var stringValue : String {
             switch self {
