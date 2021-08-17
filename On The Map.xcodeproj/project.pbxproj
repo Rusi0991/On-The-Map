@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		578A095E26CB588C009D979C /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A095D26CB588C009D979C /* InformationPostingViewController.swift */; };
 		57D0715626BE099300F73517 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0715526BE099300F73517 /* AppDelegate.swift */; };
 		57D0715826BE099300F73517 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0715726BE099300F73517 /* SceneDelegate.swift */; };
 		57D0715A26BE099300F73517 /* Login ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0715926BE099300F73517 /* Login ViewController.swift */; };
@@ -15,7 +16,6 @@
 		57D0716226BE099400F73517 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57D0716026BE099400F73517 /* LaunchScreen.storyboard */; };
 		57D0716C26BF06B200F73517 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0716B26BF06B200F73517 /* MapViewController.swift */; };
 		57D0717026BF07D000F73517 /* TableTabbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0716F26BF07D000F73517 /* TableTabbedViewController.swift */; };
-		57D0717226C2030000F73517 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0717126C2030000F73517 /* InputViewController.swift */; };
 		57D0717426C33B1800F73517 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0717326C33B1800F73517 /* StudentLocation.swift */; };
 		57D0717626C3412100F73517 /* StudentLocationResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0717526C3412100F73517 /* StudentLocationResults.swift */; };
 		57D0717D26C3570A00F73517 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0717C26C3570A00F73517 /* Student.swift */; };
@@ -23,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		578A095D26CB588C009D979C /* InformationPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
 		57D0715226BE099300F73517 /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57D0715526BE099300F73517 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57D0715726BE099300F73517 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,7 +34,6 @@
 		57D0716326BE099400F73517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57D0716B26BF06B200F73517 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		57D0716F26BF07D000F73517 /* TableTabbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTabbedViewController.swift; sourceTree = "<group>"; };
-		57D0717126C2030000F73517 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		57D0717326C33B1800F73517 /* StudentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 		57D0717526C3412100F73517 /* StudentLocationResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationResults.swift; sourceTree = "<group>"; };
 		57D0717C26C3570A00F73517 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 				57D0715926BE099300F73517 /* Login ViewController.swift */,
 				57D0716B26BF06B200F73517 /* MapViewController.swift */,
 				57D0716F26BF07D000F73517 /* TableTabbedViewController.swift */,
-				57D0717126C2030000F73517 /* InputViewController.swift */,
+				578A095D26CB588C009D979C /* InformationPostingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -205,7 +205,7 @@
 				57D0717026BF07D000F73517 /* TableTabbedViewController.swift in Sources */,
 				57D0717426C33B1800F73517 /* StudentLocation.swift in Sources */,
 				57D0715626BE099300F73517 /* AppDelegate.swift in Sources */,
-				57D0717226C2030000F73517 /* InputViewController.swift in Sources */,
+				578A095E26CB588C009D979C /* InformationPostingViewController.swift in Sources */,
 				57D0717D26C3570A00F73517 /* Student.swift in Sources */,
 				57D0715826BE099300F73517 /* SceneDelegate.swift in Sources */,
 				57D0716C26BF06B200F73517 /* MapViewController.swift in Sources */,

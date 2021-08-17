@@ -6,10 +6,17 @@
 //
 
 import Foundation
+
+struct User {
+    static var firstName = ""
+    static var lastName = ""
+}
+
+
 class Student {
     
-    let accountId = ""
-    let sessionId = ""
+    static let UserId = ""
+    static let sessionId = ""
     
     enum Endpoints{
         static let base = "https://onthemap-api.udacity.com/v1"
@@ -21,7 +28,7 @@ class Student {
             case .studentLocation:
                 return Endpoints.base + "/StudentLocation"
             case .publicUserData:
-                return Endpoints.base  + "/users/<user_id>"
+                return Endpoints.base  + "/users/\(Student.UserId)"
                 
             }
         }
@@ -69,6 +76,20 @@ class Student {
                 completion([], error)
             }
         }
+    }
+    
+    class func getPublicUserData(completion : @escaping(String?, String?, Error?) -> Void){
+        taskForGetRequest(url: Endpoints.publicUserData.url, response: PublicUserData.self) { response, error in
+            if let response = response{
+                completion(response.firstName, response.lastName, error)
+                print("getting user data completed")
+                User.firstName = response.firstName!
+                User.lastName = response.lastName!
+            } else {
+                completion(nil, nil, error)
+            }
+        }
+        
     }
     
     

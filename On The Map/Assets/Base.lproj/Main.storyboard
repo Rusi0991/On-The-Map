@@ -129,7 +129,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="8x3-Zm-Gno">
                                 <connections>
-                                    <segue destination="46Y-mu-3ac" kind="show" identifier="toInputViewController" id="S8a-G5-gR6"/>
+                                    <segue destination="46Y-mu-3ac" kind="show" id="SYt-g1-ICn"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="refresh" id="fST-aQ-4aa"/>
@@ -146,7 +146,7 @@
         <!--Add Location-->
         <scene sceneID="Eeo-Da-0Ws">
             <objects>
-                <viewController id="46Y-mu-3ac" customClass="InputViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="46Y-mu-3ac" customClass="InformationPostingViewController" customModule="On_The_Map" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ozs-6n-TIU">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -183,6 +183,9 @@
                                         <state key="normal" title="Find Location">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="findLocationTapped:" destination="46Y-mu-3ac" eventType="touchUpInside" id="A7A-fI-hhN"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -210,10 +213,42 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Location" id="4vl-76-1zd"/>
+                    <connections>
+                        <outlet property="linkTextField" destination="3Sd-nO-WpD" id="AOv-WG-tM7"/>
+                        <outlet property="locationTextField" destination="1su-pL-ldS" id="34H-Yr-v3c"/>
+                        <segue destination="AX6-KY-7Cv" kind="show" id="GLa-VC-3Gr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="86H-WJ-0eo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4127.536231884058" y="-214.28571428571428"/>
+            <point key="canvasLocation" x="4294" y="119"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="l6O-gn-Wak">
+            <objects>
+                <viewController id="AX6-KY-7Cv" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bfa-xl-b4R">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6uh-fs-KUh">
+                                <rect key="frame" x="0.0" y="56" width="390" height="602"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Jz-gK-cuY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6uh-fs-KUh" firstAttribute="top" secondItem="6Jz-gK-cuY" secondAttribute="top" id="6mL-JI-Mrc"/>
+                            <constraint firstItem="6Jz-gK-cuY" firstAttribute="bottom" secondItem="6uh-fs-KUh" secondAttribute="bottom" id="DVV-Mm-SVl"/>
+                            <constraint firstItem="6uh-fs-KUh" firstAttribute="leading" secondItem="6Jz-gK-cuY" secondAttribute="leading" id="FQu-zQ-TfI"/>
+                            <constraint firstItem="6Jz-gK-cuY" firstAttribute="trailing" secondItem="6uh-fs-KUh" secondAttribute="trailing" id="ibH-xy-jhG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="5Ru-al-3DH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ynn-hn-Jb8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5154" y="119"/>
         </scene>
         <!--Table Tabbed View Controller-->
         <scene sceneID="DK0-0h-UiZ">
@@ -241,7 +276,11 @@
                     <navigationItem key="navigationItem" title="On The Map" id="QzW-fn-sfN">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="zuB-Dx-9eq"/>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="63q-Qy-bzI"/>
+                            <barButtonItem systemItem="add" id="63q-Qy-bzI">
+                                <connections>
+                                    <segue destination="46Y-mu-3ac" kind="show" id="1SG-HL-d7c"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem systemItem="refresh" id="lKK-s1-wOf"/>
                         </rightBarButtonItems>
                     </navigationItem>
@@ -313,8 +352,11 @@
             <point key="canvasLocation" x="1446.376811594203" y="119.19642857142857"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="1SG-HL-d7c"/>
+    </inferredMetricsTieBreakers>
     <resources>
-        <image name="1786159" width="512" height="512"/>
+        <image name="1786159" width="170.66667175292969" height="170.66667175292969"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
         <systemColor name="systemBackgroundColor">

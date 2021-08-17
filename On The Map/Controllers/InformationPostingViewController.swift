@@ -1,21 +1,25 @@
 //
-//  InputViewController.swift
+//  InformationPostingViewController.swift
 //  On The Map
 //
-//  Created by Ruslan Ismayilov on 8/9/21.
+//  Created by Ruslan Ismayilov on 8/16/21.
 //
 
 import UIKit
 
-class InputViewController: UIViewController {
-
+class InformationPostingViewController: UIViewController {
+    @IBOutlet weak var locationTextField: UITextField!
+    
+    @IBOutlet weak var linkTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func findLocationTapped(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -9,6 +9,7 @@ import UIKit
 
 class TableTabbedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
+    
     @IBOutlet weak var tableView: UITableView!
     var students = [StudentLocation]()
     override func viewDidLoad() {
@@ -16,7 +17,14 @@ class TableTabbedViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         
+        Student.getStudentsLocationRequest { StudentLocationResults, error in
+            self.students = StudentLocationResults
+            self.tableView.reloadData()
+        }
+        
     }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableTabbedViewCell")!
         let student = students[indexPath.row]
