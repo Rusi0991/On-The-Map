@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		578A095E26CB588C009D979C /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A095D26CB588C009D979C /* InformationPostingViewController.swift */; };
+		578A096226CC89C4009D979C /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A096126CC89C4009D979C /* LoginRequest.swift */; };
 		57D0715626BE099300F73517 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0715526BE099300F73517 /* AppDelegate.swift */; };
 		57D0715826BE099300F73517 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0715726BE099300F73517 /* SceneDelegate.swift */; };
 		57D0715A26BE099300F73517 /* Login ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0715926BE099300F73517 /* Login ViewController.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		578A095D26CB588C009D979C /* InformationPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
+		578A096126CC89C4009D979C /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		57D0715226BE099300F73517 /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57D0715526BE099300F73517 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57D0715726BE099300F73517 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		57D0717826C3511A00F73517 /* Student Requests */ = {
 			isa = PBXGroup;
 			children = (
+				578A096126CC89C4009D979C /* LoginRequest.swift */,
 			);
 			path = "Student Requests";
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				57D0717D26C3570A00F73517 /* Student.swift in Sources */,
 				57D0715826BE099300F73517 /* SceneDelegate.swift in Sources */,
 				57D0716C26BF06B200F73517 /* MapViewController.swift in Sources */,
+				578A096226CC89C4009D979C /* LoginRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
