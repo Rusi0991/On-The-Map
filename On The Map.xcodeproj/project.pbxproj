@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		578A095E26CB588C009D979C /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A095D26CB588C009D979C /* InformationPostingViewController.swift */; };
 		578A096226CC89C4009D979C /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A096126CC89C4009D979C /* LoginRequest.swift */; };
+		578A096526CC9B45009D979C /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A096426CC9B45009D979C /* LoginResponse.swift */; };
 		57D0715626BE099300F73517 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0715526BE099300F73517 /* AppDelegate.swift */; };
 		57D0715826BE099300F73517 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0715726BE099300F73517 /* SceneDelegate.swift */; };
 		57D0715A26BE099300F73517 /* Login ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0715926BE099300F73517 /* Login ViewController.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		578A095D26CB588C009D979C /* InformationPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
 		578A096126CC89C4009D979C /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		578A096426CC9B45009D979C /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		57D0715226BE099300F73517 /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57D0715526BE099300F73517 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57D0715726BE099300F73517 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				57D0717326C33B1800F73517 /* StudentLocation.swift */,
 				57D0717E26C88D5E00F73517 /* PublicUserDataResponse.swift */,
 				57D0717526C3412100F73517 /* StudentLocationResults.swift */,
+				578A096426CC9B45009D979C /* LoginResponse.swift */,
 			);
 			path = "Student Responses";
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 			files = (
 				57D0717F26C88D5E00F73517 /* PublicUserDataResponse.swift in Sources */,
 				57D0715A26BE099300F73517 /* Login ViewController.swift in Sources */,
+				578A096526CC9B45009D979C /* LoginResponse.swift in Sources */,
 				57D0717626C3412100F73517 /* StudentLocationResults.swift in Sources */,
 				57D0717026BF07D000F73517 /* TableTabbedViewController.swift in Sources */,
 				57D0717426C33B1800F73517 /* StudentLocation.swift in Sources */,
