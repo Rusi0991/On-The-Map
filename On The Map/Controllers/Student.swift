@@ -7,16 +7,21 @@
 
 import Foundation
 
+
+
+class Student{
 struct User {
     static var firstName = ""
     static var lastName = ""
 }
 
 
-class Student {
+struct Auth {
     
-    static let UserId = ""
-    static let sessionId = ""
+    static var accountKey = ""
+    static var sessionId = ""
+    
+}
     
     enum Endpoints{
         static let base = "https://onthemap-api.udacity.com/v1"
@@ -26,9 +31,9 @@ class Student {
         var stringValue : String {
             switch self {
             case .studentLocation:
-                return Endpoints.base + "/StudentLocation"
+                return Endpoints.base + "/StudentLocation?order=-updatedAt"
             case .publicUserData:
-                return Endpoints.base  + "/users/\(Student.UserId)"
+                return Endpoints.base  + "/users/\(Auth.accountKey)"
             case.login:
                 return Endpoints.base + "/session"
                 
@@ -61,8 +66,21 @@ class Student {
                 completion(responseObject,nil)
             }
         } catch {
-            DispatchQueue.main.async {
-                completion(nil, error )
+            
+            do {
+                let range = (5..<data.count)
+                let newData = data.subdata(in: range) /* subset response data! */
+                print(String(data: newData, encoding: .utf8)!)
+                
+                let responseObject = try decoder.decode(ResponseType.self, from: newData)
+                DispatchQueue.main.async {
+                    completion(responseObject, nil)
+                }
+                
+            } catch {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
             }
         }
         }
@@ -124,7 +142,40 @@ class Student {
         }
         
     }
-    
-    
+    class func login (username : String, password : String, completion : @escaping(Bool, Error?) -> Void ){
+        var request = URLRequest(url: Endpoints.login.url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = ("{\"udacity\": {\"username\": \"" + username + "\", \"password\": \"" + password + "\"}}").data(using: .utf8)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
+                return
+            }
+            do{
+            let range =  (5..<data.count)
+              let newData = data.subdata(in: range) /* subset response data! */
+              print(String(data: newData, encoding: .utf8)!)
+                let decoder = JSONDecoder()
+                let responseObject = try decoder.decode(LoginResponse.self, from: data)
+                DispatchQueue.main.async {
+                    Auth.accountKey = responseObject.account.key ?? "No Key"
+                    Auth.sessionId = responseObject.session.id ?? "No Session Id"
+                }
+                
+                
+            } catch {
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
+            }
+            
+    }
+        task.resume()
     
 }
+}
+

@@ -11,29 +11,37 @@ class TableTabbedViewController: UIViewController, UITableViewDelegate, UITableV
 
     
     @IBOutlet weak var tableView: UITableView!
-    var students = [StudentLocation]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         
         Student.getStudentsLocationRequest { StudentLocationResults, error in
-            self.students = StudentLocationResults
-            self.tableView.reloadData()
+            if error == nil{
+            StudentModel.locations = StudentLocationResults
+                self.tableView.reloadData()
+            } else {
+                let alert = UIAlertController(title: "Error", message: "Data couldn't load", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+            }
         }
         
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableTabbedViewCell")!
-        let student = students[indexPath.row]
-        cell.textLabel?.text = student.firstName + student.lastName
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationTableViewCell")!
+        let student = StudentModel.locations[indexPath.row]
+        cell.textLabel?.text = "\(student.firstName)" + " " + "\(student.lastName)"
+        cell.detailTextLabel?.text = "\(student.mediaURL)"
         return cell
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return students.count
+        return StudentModel.locations.count
     }
 
 }

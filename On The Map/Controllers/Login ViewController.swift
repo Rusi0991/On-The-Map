@@ -25,7 +25,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func loginTapped(_ sender: Any) {
-        performSegue(withIdentifier: "toTabViewController", sender: (Any).self)
+        Student.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLoginResponse(success:error:))
+       
         
     }
     
@@ -34,7 +35,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func handleLoginResponse(success : Bool, error : Error?){
         if success {
-            print("createSession")
+            print(Student.Auth.sessionId)
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "toTabViewController", sender: nil)
+            }
+            
+        }
+        else{
+           
+            error?.localizedDescription ?? ""
         }
     }
     
