@@ -25,7 +25,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func loginTapped(_ sender: Any) {
-        Student.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLoginResponse(success:error:))
+        if (emailTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)! {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Required fields!", message: "Please fill both email and password", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+                
+            }
+        }else {
+            
+                Student.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLoginResponse(success:error:))
+            }
        
         
     }
@@ -43,7 +54,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         else{
            
-            error?.localizedDescription ?? ""
+            error?.localizedDescription 
         }
     }
     

@@ -60,7 +60,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="loginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aLb-TX-JHd"/>
-                                                    <segue destination="6tu-z7-kGn" kind="show" identifier="toTabViewController" id="sfH-cf-CFE"/>
+                                                    <segue destination="6tu-z7-kGn" kind="presentation" identifier="toTabViewController" id="8L4-01-mBO"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzA-65-hhg">
@@ -93,6 +93,7 @@
                             <constraint firstItem="Fmq-5a-1MY" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pco-5o-hzf"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="hhb-iW-WLU"/>
                     <connections>
                         <outlet property="emailTextField" destination="Awx-fH-mht" id="ji7-6L-65y"/>
                         <outlet property="loginButton" destination="3aC-Mi-Ihz" id="a2X-tU-p20"/>
@@ -101,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="616" y="119"/>
+            <point key="canvasLocation" x="1544.6153846153845" y="118.72037914691943"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="8sJ-ce-1YD">
@@ -113,6 +114,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8AZ-Te-0om">
                                 <rect key="frame" x="0.0" y="56" width="390" height="734"/>
+                                <connections>
+                                    <outlet property="delegate" destination="EZk-NY-0hS" id="fpX-fa-LtV"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4m8-Fn-oMf"/>
@@ -124,6 +128,7 @@
                             <constraint firstItem="8AZ-Te-0om" firstAttribute="leading" secondItem="4m8-Fn-oMf" secondAttribute="leading" id="wyi-VT-dsn"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="D5U-ns-bhx"/>
                     <navigationItem key="navigationItem" title="On The Map" id="EZk-NY-0hS">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="3VR-1M-eaZ"/>
                         <rightBarButtonItems>
@@ -141,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iBd-Xh-kWe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3268.115942028986" y="-214.28571428571428"/>
+            <point key="canvasLocation" x="4196.9230769230771" y="-214.69194312796208"/>
         </scene>
         <!--Add Location-->
         <scene sceneID="Eeo-Da-0Ws">
@@ -221,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="86H-WJ-0eo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4294" y="119"/>
+            <point key="canvasLocation" x="5223.0769230769229" y="118.72037914691943"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="l6O-gn-Wak">
@@ -248,7 +253,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ynn-hn-Jb8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5154" y="119"/>
+            <point key="canvasLocation" x="6083.0769230769229" y="118.72037914691943"/>
         </scene>
         <!--Table Tabbed View Controller-->
         <scene sceneID="DK0-0h-UiZ">
@@ -271,6 +276,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="QzW-fn-sfN" id="UfK-Ax-SQs"/>
+                                    <outlet property="delegate" destination="QzW-fn-sfN" id="3Js-LB-Tm0"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pdc-JQ-2Lc"/>
@@ -282,6 +291,7 @@
                             <constraint firstItem="taF-Zk-eje" firstAttribute="bottom" secondItem="pdc-JQ-2Lc" secondAttribute="bottom" id="wLy-Ef-Riv"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="bgu-zB-mWA"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="On The Map" id="QzW-fn-sfN">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="zuB-Dx-9eq"/>
@@ -301,7 +311,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SAK-bf-PSC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3268" y="453"/>
+            <point key="canvasLocation" x="4196.9230769230771" y="452.84360189573459"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5ce-cl-Eyc">
@@ -320,7 +330,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WbL-Js-aeC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2392.753623188406" y="452.67857142857139"/>
+            <point key="canvasLocation" x="3321.5384615384614" y="452.1327014218009"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kEs-Xn-m83">
@@ -328,6 +338,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="58L-2U-mRl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" image="mappin.and.ellipse" catalog="system" id="MBR-QV-UL2"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="LA1-3E-82x"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="U8r-0q-7Gh">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -339,7 +350,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jXx-7P-pPQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2356.521739130435" y="-214.28571428571428"/>
+            <point key="canvasLocation" x="3284.6153846153843" y="-214.69194312796208"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="1j9-zZ-xiv">
@@ -353,13 +364,28 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="58L-2U-mRl" kind="relationship" relationship="viewControllers" id="aVY-CL-8l0"/>
-                        <segue destination="lJQ-Gp-UH2" kind="relationship" relationship="viewControllers" id="Xka-De-mhU"/>
+                        <segue destination="58L-2U-mRl" kind="relationship" relationship="viewControllers" id="bUu-T6-jsa"/>
+                        <segue destination="lJQ-Gp-UH2" kind="relationship" relationship="viewControllers" id="38S-tZ-Cqz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Xa-bA-sLg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1446.376811594203" y="119.19642857142857"/>
+            <point key="canvasLocation" x="2375.3846153846152" y="118.72037914691943"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="XgZ-Kp-n8b">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="In5-pN-I7d" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="12i-Q0-aeb">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jO2-nH-4Vi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="615.38461538461536" y="118.72037914691943"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

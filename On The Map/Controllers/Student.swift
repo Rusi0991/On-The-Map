@@ -54,10 +54,7 @@ struct Auth {
                 }
                 return
             }
-            if error != nil {
-                //handle error
-                return
-            }
+            
         
         let decoder = JSONDecoder()
         do {
@@ -123,6 +120,7 @@ struct Auth {
         taskForGetRequest(url: Endpoints.studentLocation.url, response: StudentLocationResults.self) { response, error in
             if let response = response {
                 completion(response.results, nil)
+                
             } else {
                 completion([], error)
             }
@@ -162,8 +160,8 @@ struct Auth {
                 let decoder = JSONDecoder()
                 let responseObject = try decoder.decode(LoginResponse.self, from: data)
                 DispatchQueue.main.async {
-                    Auth.accountKey = responseObject.account.key ?? "No Key"
-                    Auth.sessionId = responseObject.session.id ?? "No Session Id"
+                    Auth.accountKey = responseObject.account.key
+                    Auth.sessionId = responseObject.session.id
                 }
                 
                 

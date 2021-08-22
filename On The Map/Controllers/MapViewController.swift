@@ -17,6 +17,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        showPins()
+    }
+    
 
     func showPins(){
         //        data that you can download from parse.
@@ -55,5 +60,38 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
+    // MARK: - MKMapViewDelegate
 
+    // Here we create a view with a "right callout accessory view". You might choose to look into other
+    // decoration alternatives. Notice the similarity between this method and the cellForRowAtIndexPath
+    // method in TableViewDataSource.
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let reuseId = "pin"
+        
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        
+        if  pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView?.canShowCallout = true
+            pinView?.tintColor = .red
+            pinView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }else{
+            pinView?.annotation = annotation
+        }
+        return pinView
+    }
+    
+    
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView{
+            let app = UIApplication.shared
+            if let toOpen = view.annotation?.subtitle!{
+                app.canOpenURL(URL(string: toOpen)!)
+                app.open(URL(string: toOpen)!)
+            }
+            
+        }
+        
+    }
 }
