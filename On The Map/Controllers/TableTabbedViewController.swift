@@ -17,20 +17,25 @@ class TableTabbedViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         
-        Student.getStudentsLocationRequest { StudentLocationResults, error in
-            if error == nil{
-            StudentModel.locations = StudentLocationResults
+        Student.getStudentsLocations { studentlocationresults, error in
+            
+            if error == nil {
+                StudentModel.locations = studentlocationresults
                 self.tableView.reloadData()
+                
             } else {
                 let alert = UIAlertController(title: "Error", message: "Data couldn't load", preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(action)
                 self.present(alert, animated: true, completion: nil)
             }
-        }
+         }
         
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationTableViewCell")!

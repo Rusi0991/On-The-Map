@@ -119,7 +119,7 @@ struct Auth {
         task.resume()
     }
     
-    class func getStudentsLocationRequest(completion : @escaping( [StudentLocation], Error? ) -> Void){
+    class func getStudentsLocations(completion : @escaping( [StudentLocation], Error? ) -> Void){
         taskForGetRequest(url: Endpoints.studentLocation.url, response: StudentLocationResults.self) { response, error in
             if let response = response {
                 completion(response.results, nil)
