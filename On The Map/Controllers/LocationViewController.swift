@@ -1,26 +1,21 @@
 //
-//  InformationPostingViewController.swift
+//  LocationViewController.swift
 //  On The Map
 //
-//  Created by Ruslan Ismayilov on 8/16/21.
+//  Created by Ruslan Ismayilov on 8/22/21.
 //
 
 import UIKit
 
-class InformationPostingViewController: UIViewController {
-    @IBOutlet weak var locationTextField: UITextField!
-    
-    @IBOutlet weak var linkTextField: UITextField!
+class LocationViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func findLocationTapped(_ sender: Any) {
-        performSegue(withIdentifier: "toLocationVC", sender: nil)
-    }
-    
+
     /*
     // MARK: - Navigation
 

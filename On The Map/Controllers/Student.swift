@@ -13,6 +13,8 @@ class Student{
 struct User {
     static var firstName = ""
     static var lastName = ""
+    static var createdAt = ""
+    static var objectId = ""
 }
 
 
@@ -28,6 +30,8 @@ struct Auth {
         case studentLocation
         case publicUserData
         case login
+        case postStudentLocation
+        
         var stringValue : String {
             switch self {
             case .studentLocation:
@@ -36,7 +40,8 @@ struct Auth {
                 return Endpoints.base  + "/users/\(Auth.accountKey)"
             case.login:
                 return Endpoints.base + "/session"
-                
+            case .postStudentLocation:
+                return Endpoints.base + "StudentLocation"
             }
         }
         
@@ -93,7 +98,7 @@ struct Auth {
         request.httpBody = try! JSONEncoder().encode(body)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else{
+            guard let data = data else {
                 DispatchQueue.main.async {
                     completion(nil, error)
                 }
@@ -175,5 +180,21 @@ struct Auth {
         task.resume()
     
 }
+    class func postStudentLocation(uniqueKey : String, firstName : String, lastName : String, mapString : String, mediaURL : String, longtitude : Double, latitude : Double, completion : @escaping(Bool, Error?) -> Void){
+        
+        let body = PostingStudentsLocationRequest(uniqueKey: uniqueKey, firstName: firstName, lastName: lastName, mapString: mapString, mediaURL: mediaURL, latitude: latitude, longitude: longtitude)
+        
+        taskForPOSTRequest(url: Endpoints.postStudentLocation.url, responseType: PostingStudentLocationResponse.self, body: body) { response, error in
+            if let response = response {
+                User.createdAt = response.createdAt
+                completion(true, nil)
+            }else{
+                
+            completion(false, error)
+            }
+        }
+        
+        
+    }
 }
 
