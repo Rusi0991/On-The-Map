@@ -190,7 +190,7 @@
                                         </state>
                                         <connections>
                                             <action selector="findLocationTapped:" destination="46Y-mu-3ac" eventType="touchUpInside" id="A7A-fI-hhN"/>
-                                            <segue destination="AX6-KY-7Cv" kind="show" id="LmF-bZ-IQh"/>
+                                            <segue destination="AX6-KY-7Cv" kind="show" identifier="toLocationVC" id="LmF-bZ-IQh"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -218,7 +218,9 @@
                             <constraint firstItem="4kj-jn-IYq" firstAttribute="top" secondItem="VQU-VU-F9c" secondAttribute="top" constant="115" id="nku-r4-RNJ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Location" id="4vl-76-1zd"/>
+                    <navigationItem key="navigationItem" title="Add Location" id="4vl-76-1zd">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="Mog-Dk-us9"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="linkTextField" destination="3Sd-nO-WpD" id="AOv-WG-tM7"/>
                         <outlet property="locationTextField" destination="1su-pL-ldS" id="34H-Yr-v3c"/>
@@ -236,24 +238,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6uh-fs-KUh">
-                                <rect key="frame" x="0.0" y="56" width="390" height="651"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6uh-fs-KUh">
+                                <rect key="frame" x="0.0" y="56" width="390" height="602"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuR-t4-zyq">
+                                <rect key="frame" x="35" y="598" width="321" height="50"/>
+                                <color key="backgroundColor" red="0.0059502835389578061" green="0.47644073299188361" blue="0.96130555870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="04j-R0-Ria"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Finish">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="finishButtonTapped:" destination="AX6-KY-7Cv" eventType="touchUpInside" id="7vI-UA-iOG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Jz-gK-cuY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6uh-fs-KUh" firstAttribute="top" secondItem="6Jz-gK-cuY" secondAttribute="top" id="6mL-JI-Mrc"/>
-                            <constraint firstItem="6Jz-gK-cuY" firstAttribute="bottom" secondItem="6uh-fs-KUh" secondAttribute="bottom" id="DVV-Mm-SVl"/>
-                            <constraint firstItem="6uh-fs-KUh" firstAttribute="leading" secondItem="6Jz-gK-cuY" secondAttribute="leading" id="FQu-zQ-TfI"/>
-                            <constraint firstItem="6Jz-gK-cuY" firstAttribute="trailing" secondItem="6uh-fs-KUh" secondAttribute="trailing" id="ibH-xy-jhG"/>
+                            <constraint firstItem="6Jz-gK-cuY" firstAttribute="bottom" secondItem="yuR-t4-zyq" secondAttribute="bottom" constant="10" id="KWi-xr-D7K"/>
+                            <constraint firstItem="yuR-t4-zyq" firstAttribute="leading" secondItem="6Jz-gK-cuY" secondAttribute="leading" constant="35" id="M6M-m0-jcw"/>
+                            <constraint firstItem="6Jz-gK-cuY" firstAttribute="trailing" secondItem="yuR-t4-zyq" secondAttribute="trailing" constant="34" id="qXJ-LN-ino"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5Ru-al-3DH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ynn-hn-Jb8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6083.0769230769229" y="118.72037914691943"/>
+            <point key="canvasLocation" x="6026" y="119"/>
         </scene>
         <!--Table Tabbed View Controller-->
         <scene sceneID="DK0-0h-UiZ">
@@ -394,7 +410,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dT3-ix-IeD"/>
+        <segue reference="1SG-HL-d7c"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1786159" width="170.66667175292969" height="170.66667175292969"/>

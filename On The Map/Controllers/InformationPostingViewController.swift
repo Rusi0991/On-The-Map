@@ -6,29 +6,52 @@
 //
 
 import UIKit
+import MapKit
 
-class InformationPostingViewController: UIViewController {
+class InformationPostingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var locationTextField: UITextField!
     
     @IBOutlet weak var linkTextField: UITextField!
+    var latitude : Double = 0.0
+    var longitude : Double = 0.0 // -> (CLLocationCoordinate2D(latitude:Double, logitude: Double))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        locationTextField.delegate = self
+        linkTextField.delegate = self
     }
     
     @IBAction func findLocationTapped(_ sender: Any) {
-        performSegue(withIdentifier: "toLocationVC", sender: nil)
+        guard let location = locationTextField.text else {return}
+        findGeocode("\(location)")
+        
+        
     }
     
-    /*
-    // MARK: - Navigation
+    func findGeocode(_ address: String) {
+        
+        CLGeocoder().geocodeAddressString(address) { (placemark, error)
+            in
+            if error == nil {
+                
+                if let placemark = placemark?.first,
+                   let location = placemark.location {
+                    self.latitude = location.coordinate.latitude
+                    self.longitude = location.coordinate.longitude
+                    
+                    print("Latitude:\(self.latitude), Longitude:\(self.longitude)")
+                
+                    self.performSegue(withIdentifier: "toLocationVC", sender: nil)
+                }
+                
+            }else {
+                let alert = UIAlertController(title: "Error", message: "Geocode could not find. Try again", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+                print("geocode error")
+            }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
     }
-    */
-
 }

@@ -187,8 +187,9 @@ struct Auth {
         taskForPOSTRequest(url: Endpoints.postStudentLocation.url, responseType: PostingStudentLocationResponse.self, body: body) { response, error in
             if let response = response {
                 User.createdAt = response.createdAt
+                User.objectId = response.objectId
                 completion(true, nil)
-            }else{
+            } else {
                 
             completion(false, error)
             }

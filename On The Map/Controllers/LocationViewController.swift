@@ -25,5 +25,7 @@ class LocationViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func finishButtonTapped(_ sender: Any) {
+    }
+    
 }
