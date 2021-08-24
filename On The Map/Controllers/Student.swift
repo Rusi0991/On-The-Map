@@ -15,6 +15,8 @@ struct User {
     static var lastName = ""
     static var createdAt = ""
     static var objectId = ""
+    static var location = ""
+    static var link = ""
 }
 
 
@@ -135,7 +137,7 @@ struct Auth {
     class func getPublicUserData(completion : @escaping(String?, String?, Error?) -> Void){
         taskForGetRequest(url: Endpoints.publicUserData.url, response: PublicUserData.self) { response, error in
             if let response = response{
-                completion(response.firstName, response.lastName, error)
+                completion(response.firstName, response.lastName, nil)
                 print("getting user data completed")
                 User.firstName = response.firstName!
                 User.lastName = response.lastName!
@@ -180,9 +182,9 @@ struct Auth {
         task.resume()
     
 }
-    class func postStudentLocation(uniqueKey : String, firstName : String, lastName : String, mapString : String, mediaURL : String, longtitude : Double, latitude : Double, completion : @escaping(Bool, Error?) -> Void){
+    class func postStudentLocation(firstName : String, lastName : String, mapString : String, mediaURL : String, longitude : Double, latitude : Double, completion : @escaping(Bool, Error?) -> Void){
         
-        let body = PostingStudentsLocationRequest(uniqueKey: uniqueKey, firstName: firstName, lastName: lastName, mapString: mapString, mediaURL: mediaURL, latitude: latitude, longitude: longtitude)
+        let body = PostingStudentsLocationRequest(uniqueKey: Auth.accountKey, firstName: firstName, lastName: lastName, mapString: mapString, mediaURL: mediaURL, latitude: latitude, longitude: longitude)
         
         taskForPOSTRequest(url: Endpoints.postStudentLocation.url, responseType: PostingStudentLocationResponse.self, body: body) { response, error in
             if let response = response {

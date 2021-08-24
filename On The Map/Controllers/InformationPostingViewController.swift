@@ -19,6 +19,7 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         locationTextField.delegate = self
         linkTextField.delegate = self
+        
     }
     
     @IBAction func findLocationTapped(_ sender: Any) {
@@ -53,5 +54,16 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
             }
 
 }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toLocationVC" {
+            if let mapVC = segue.destination as? LocationViewController {
+                mapVC.link = linkTextField.text ?? ""
+                mapVC.location = locationTextField.text ?? ""
+                mapVC.latitude = latitude
+                mapVC.longitude = longitude
+            }
+        }
     }
 }
