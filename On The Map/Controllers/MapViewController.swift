@@ -22,7 +22,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         showPins()
     }
     
-
+    @IBAction func refreshTapped(_ sender: Any) {
+        showPins()
+    }
+    
+    
+    @IBAction func logoutTapped(_ sender: Any) {
+    }
+    
+    
     func showPins(){
         //        data that you can download from parse.
         Student.getStudentsLocations { studentlocationresults, error in

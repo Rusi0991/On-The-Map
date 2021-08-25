@@ -29,6 +29,10 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    @IBAction func cancelTapped(_ sender: Any) {
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
     func findGeocode(_ address: String) {
         
         CLGeocoder().geocodeAddressString(address) { (placemark, error)

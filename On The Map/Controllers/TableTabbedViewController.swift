@@ -33,6 +33,21 @@ class TableTabbedViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     
+    
+    
+    @IBAction func refreshTapped(_ sender: Any) {
+        Student.getStudentsLocations { studentlocationresults, error in
+            
+                StudentModel.locations = studentlocationresults
+                self.tableView.reloadData()
+    }
+    }
+    @IBAction func logoutTapped(_ sender: Any) {
+        
+    }
+    
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

@@ -19,7 +19,7 @@ class LocationViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        
+        createMapAnnotation()
         // Do any additional setup after loading the view.
     }
     
@@ -61,6 +61,33 @@ class LocationViewController: UIViewController, MKMapViewDelegate {
             present(alert, animated: true, completion: nil)
             print("student could not be added.")
         }
+    }
+    func createMapAnnotation (){
+        let annotation = MKPointAnnotation()
+        annotation.coordinate.latitude = latitude
+        annotation.coordinate.longitude = longitude
+        annotation.title = location
+        mapView.addAnnotation(annotation)
+        
+        self.mapView.setCenter(annotation.coordinate, animated: true) //--> to place pin the center of the mapView
+        let region = MKCoordinateRegion(center: annotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        self.mapView.setRegion(region, animated: true)
+
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let reuseId = "pin"
+        
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        
+        if  pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView?.canShowCallout = true
+        }else{
+            pinView?.annotation = annotation
+        }
+        return pinView
     }
     
     }
