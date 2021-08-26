@@ -7,11 +7,11 @@
 
 import Foundation
 struct PublicUserData: Codable {
-    var firstName: String?
-    var lastName: String?
+    var firstName: String
+    var lastName: String
  
     enum CodingKeys: String, CodingKey {
-        
+
         case firstName = "first_name"
         case lastName = "last_name"
     }

@@ -138,7 +138,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="8x3-Zm-Gno">
                                 <connections>
-                                    <segue destination="46Y-mu-3ac" kind="show" id="dT3-ix-IeD"/>
+                                    <action selector="addLocation:" destination="Fdr-yq-kbS" id="8zp-ik-sBf"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="refresh" id="fST-aQ-4aa">
@@ -150,6 +150,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="8AZ-Te-0om" id="Ovk-Pi-ap7"/>
+                        <segue destination="46Y-mu-3ac" kind="show" identifier="InformationPostingViewController" id="vT2-Q5-dbU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iBd-Xh-kWe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -159,7 +160,7 @@
         <!--Add Location-->
         <scene sceneID="Eeo-Da-0Ws">
             <objects>
-                <viewController id="46Y-mu-3ac" customClass="InformationPostingViewController" customModule="On_The_Map" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toInputVC" id="46Y-mu-3ac" customClass="InformationPostingViewController" customModule="On_The_Map" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ozs-6n-TIU">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -353,7 +354,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="63q-Qy-bzI">
                                 <connections>
-                                    <segue destination="46Y-mu-3ac" kind="show" id="1SG-HL-d7c"/>
+                                    <action selector="addLocation:" destination="F0F-lk-CpY" id="mbC-M2-L3e"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="refresh" id="lKK-s1-wOf">
@@ -366,6 +367,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="taF-Zk-eje" id="n7x-oN-6BA"/>
+                        <segue destination="46Y-mu-3ac" kind="show" id="wX7-lV-2Wh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SAK-bf-PSC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -451,7 +453,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dT3-ix-IeD"/>
+        <segue reference="vT2-Q5-dbU"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1786159" width="170.66667175292969" height="170.66667175292969"/>

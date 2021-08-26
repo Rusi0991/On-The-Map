@@ -21,6 +21,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewWillAppear(true)
         showPins()
     }
+    @IBAction func addLocation(_ sender: Any) {
+        if Student.User.createdAt == ""{
+            performSegue(withIdentifier: "InformationPostingViewController", sender: nil)
+        } else {
+            showAlert()
+        }
+    }
     
     @IBAction func refreshTapped(_ sender: Any) {
         showPins()
@@ -100,6 +107,27 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
             
         }
+        
+    }
+    
+    func showAlert(){
+        let alert = UIAlertController(title: "Warning", message: "You have already posted a student location. Would you like to overwrite your current location?", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Overwrite", style: .default) { action in
+            if let vc = self.storyboard?.instantiateViewController(identifier: "toInputVC") as? InformationPostingViewController{
+                
+                vc.loadView() 
+                vc.viewDidLoad()
+                vc.linkTextField.text = Student.User.link
+                vc.locationTextField.text = Student.User.location
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                fatalError("alert error")
+            }
+        }
+        let okAction2 = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        alert.addAction(okAction2)
+        present(alert, animated: true, completion: nil)
         
     }
 }

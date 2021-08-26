@@ -17,6 +17,7 @@ struct User {
     static var objectId = ""
     static var location = ""
     static var link = ""
+    static var updatedAt = ""
 }
 
 
@@ -33,6 +34,7 @@ struct Auth {
         case publicUserData
         case login
         case postStudentLocation
+        case updateLocation
         
         var stringValue : String {
             switch self {
@@ -43,7 +45,9 @@ struct Auth {
             case.login:
                 return Endpoints.base + "/session"
             case .postStudentLocation:
-                return Endpoints.base + "StudentLocation"
+                return Endpoints.base + "/StudentLocation"
+            case .updateLocation:
+                return Endpoints.base + "/StudentLocation/8ZExGR5uX8"
             }
         }
         
@@ -52,8 +56,8 @@ struct Auth {
         }
     }
     
-    class func taskForGetRequest<ResponseType : Decodable>(url : URL, response : ResponseType.Type, completion : @escaping(ResponseType?, Error?) -> Void) -> URLSessionTask {
-        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
+     class func taskForGetRequest<ResponseType : Decodable>(url : URL, response : ResponseType.Type, completion : @escaping(ResponseType?, Error?) -> Void) -> URLSessionTask {
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {
                 DispatchQueue.main.async {
                     completion(nil, error)
@@ -139,8 +143,8 @@ struct Auth {
             if let response = response{
                 completion(response.firstName, response.lastName, nil)
                 print("getting user data completed")
-                User.firstName = response.firstName!
-                User.lastName = response.lastName!
+                User.firstName = response.firstName
+                User.lastName = response.lastName
             } else {
                 completion(nil, nil, error)
             }
@@ -165,10 +169,11 @@ struct Auth {
               let newData = data.subdata(in: range) /* subset response data! */
               print(String(data: newData, encoding: .utf8)!)
                 let decoder = JSONDecoder()
-                let responseObject = try decoder.decode(LoginResponse.self, from: data)
+                let responseObject = try decoder.decode(LoginResponse.self, from: newData)
                 DispatchQueue.main.async {
                     Auth.accountKey = responseObject.account.key
                     Auth.sessionId = responseObject.session.id
+                    completion(responseObject.account.registered, nil)
                 }
                 
                 
@@ -196,6 +201,51 @@ struct Auth {
             completion(false, error)
             }
         }
+        
+        
+    }
+    
+    class func updateStudentsLocations(firstName : String, lastName : String, mapString : String, mediaURL : String, longitude : Double, latitude : Double, completion : @escaping(Bool, Error?) -> Void) {
+        
+        
+        var request = URLRequest(url: Endpoints.updateLocation.url)
+        request.httpMethod = "PUT"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let body = PostingStudentsLocationRequest(uniqueKey: Auth.accountKey, firstName: firstName, lastName: lastName, mapString: mapString, mediaURL: mediaURL, latitude: latitude, longitude: longitude)
+    
+        request.httpBody = try! JSONEncoder().encode(body)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
+                return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let responseObject = try decoder.decode(PuttingStudentsLocationResponse.self, from: data)
+                User.updatedAt = responseObject.updatedAt
+            } catch  {
+                do {
+                    let range = (5..<data.count)
+                    let newData = data.subdata(in: range) /* subset response data! */
+                    print(String(data: newData, encoding: .utf8)!)
+                    let responseObject = try JSONDecoder().decode(PuttingStudentsLocationResponse.self, from: newData)
+                    DispatchQueue.main.async {
+                        User.updatedAt = responseObject.updatedAt
+                        print("location updated")
+                        completion(true, nil)
+                    }
+                }catch{
+                    DispatchQueue.main.async {
+                        completion(false, error)
+                    }
+                }
+            }
+        }
+        task.resume()
         
         
     }

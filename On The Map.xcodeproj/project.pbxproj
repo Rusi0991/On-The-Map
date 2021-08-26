@@ -27,6 +27,7 @@
 		57D0717626C3412100F73517 /* StudentLocationResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0717526C3412100F73517 /* StudentLocationResults.swift */; };
 		57D0717D26C3570A00F73517 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0717C26C3570A00F73517 /* Student.swift */; };
 		57D0717F26C88D5E00F73517 /* PublicUserDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0717E26C88D5E00F73517 /* PublicUserDataResponse.swift */; };
+		57E6412E26D5E6BF00CB52EC /* PuttingStudentsLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6412D26D5E6BF00CB52EC /* PuttingStudentsLocationResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		57D0717526C3412100F73517 /* StudentLocationResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationResults.swift; sourceTree = "<group>"; };
 		57D0717C26C3570A00F73517 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		57D0717E26C88D5E00F73517 /* PublicUserDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicUserDataResponse.swift; sourceTree = "<group>"; };
+		57E6412D26D5E6BF00CB52EC /* PuttingStudentsLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuttingStudentsLocationResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				57D0717526C3412100F73517 /* StudentLocationResults.swift */,
 				578A096426CC9B45009D979C /* LoginResponse.swift */,
 				57C43A3326D3384A008F247D /* PostingStudentLocationResponse.swift */,
+				57E6412D26D5E6BF00CB52EC /* PuttingStudentsLocationResponse.swift */,
 			);
 			path = "Student Responses";
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				57C43A3626D339AD008F247D /* LocationViewController.swift in Sources */,
 				57D0717626C3412100F73517 /* StudentLocationResults.swift in Sources */,
 				57D0717026BF07D000F73517 /* TableTabbedViewController.swift in Sources */,
+				57E6412E26D5E6BF00CB52EC /* PuttingStudentsLocationResponse.swift in Sources */,
 				57D0717426C33B1800F73517 /* StudentLocation.swift in Sources */,
 				578A096826CF45E1009D979C /* StudentModel.swift in Sources */,
 				57D0715626BE099300F73517 /* AppDelegate.swift in Sources */,
