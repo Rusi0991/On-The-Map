@@ -35,7 +35,7 @@ class TableTabbedViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func addLocation(_ sender: Any) {
         if Student.User.createdAt == ""{
-            performSegue(withIdentifier: "InformationPostingViewController", sender: nil)
+            performSegue(withIdentifier: "toInformationVC", sender: nil)
         } else {
             showAlert()
         }

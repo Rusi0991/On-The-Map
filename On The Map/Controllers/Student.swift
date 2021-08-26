@@ -35,6 +35,7 @@ struct Auth {
         case login
         case postStudentLocation
         case updateLocation
+        case logout
         
         var stringValue : String {
             switch self {
@@ -48,6 +49,8 @@ struct Auth {
                 return Endpoints.base + "/StudentLocation"
             case .updateLocation:
                 return Endpoints.base + "/StudentLocation/8ZExGR5uX8"
+            case  .logout:
+                return Endpoints.base + "/session"
             }
         }
         
@@ -246,8 +249,48 @@ struct Auth {
             }
         }
         task.resume()
-        
-        
     }
+    
+    class func logout(completion: @escaping (Bool, Error?) -> Void){
+        
+        var request = URLRequest(url: Endpoints.logout.url)
+        request.httpMethod = "DELETE"
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+          if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+          request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
+                return
+            }
+            
+            do{
+                let range = (5..<data.count)
+                let newData = data.subdata(in: range) /* subset response data! */
+                print(String(data: newData, encoding: .utf8)!)
+                
+                _ = try JSONDecoder().decode(Session.self, from: newData)
+                DispatchQueue.main.async {
+                    Auth.sessionId = ""
+                    completion(true, nil)
+                }
+             
+            }catch{
+                completion(false, error)
+                print("Logout failed.")
+            }
+           
+        }
+        
+        task.resume()
 }
 
+}

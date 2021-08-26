@@ -256,7 +256,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuR-t4-zyq">
-                                <rect key="frame" x="35" y="647" width="321" height="50"/>
+                                <rect key="frame" x="35" y="598" width="321" height="50"/>
                                 <color key="backgroundColor" red="0.0059502835389578061" green="0.47644073299188361" blue="0.96130555870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="04j-R0-Ria"/>
@@ -367,7 +367,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="taF-Zk-eje" id="n7x-oN-6BA"/>
-                        <segue destination="46Y-mu-3ac" kind="show" id="wX7-lV-2Wh"/>
+                        <segue destination="46Y-mu-3ac" kind="show" identifier="toInformationVC" id="wX7-lV-2Wh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SAK-bf-PSC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -453,7 +453,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="vT2-Q5-dbU"/>
+        <segue reference="wX7-lV-2Wh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1786159" width="170.66667175292969" height="170.66667175292969"/>
