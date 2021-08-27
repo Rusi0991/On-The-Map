@@ -20,8 +20,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         hideKeyboardWhenTappedAround()
+        navigationController?.tabBarController?.tabBar.isHidden = true
         
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.tabBarController?.tabBar.isHidden = true
     }
 
     @IBAction func loginTapped(_ sender: Any) {
@@ -42,6 +46,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
+        UIApplication.shared.open(Student.Endpoints.webAuth.url, options: [:], completionHandler: nil)
     }
     
     func handleLoginResponse(success : Bool, error : Error?){
@@ -54,8 +59,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         else{
            
-            error?.localizedDescription 
+            showLoginFailure(message: error?.localizedDescription ?? "")
         }
+    }
+    
+    func showLoginFailure(message: String){
+        let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        show(alertVC, sender: nil)
     }
     
     func hideKeyboardWhenTappedAround() {

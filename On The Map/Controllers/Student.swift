@@ -14,11 +14,14 @@ struct User {
     static var firstName = ""
     static var lastName = ""
     static var createdAt = ""
-    static var objectId = ""
     static var location = ""
     static var link = ""
     static var updatedAt = ""
 }
+    
+    struct PreviousPostLocationObject {
+        static var objectId = ""
+    }
 
 
 struct Auth {
@@ -36,6 +39,7 @@ struct Auth {
         case postStudentLocation
         case updateLocation
         case logout
+        case webAuth
         
         var stringValue : String {
             switch self {
@@ -51,6 +55,9 @@ struct Auth {
                 return Endpoints.base + "/StudentLocation/8ZExGR5uX8"
             case  .logout:
                 return Endpoints.base + "/session"
+            case .webAuth:
+                return "https://auth.udacity.com/sign-up"
+                
             }
         }
         
@@ -197,7 +204,7 @@ struct Auth {
         taskForPOSTRequest(url: Endpoints.postStudentLocation.url, responseType: PostingStudentLocationResponse.self, body: body) { response, error in
             if let response = response {
                 User.createdAt = response.createdAt
-                User.objectId = response.objectId
+                PreviousPostLocationObject.objectId = response.objectId
                 completion(true, nil)
             } else {
                 

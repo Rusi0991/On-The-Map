@@ -50,6 +50,19 @@ class TableTabbedViewController: UIViewController, UITableViewDelegate, UITableV
     }
     }
     @IBAction func logoutTapped(_ sender: Any) {
+        Student.logout { success, error in
+            if success{
+                self.dismiss(animated: true, completion: nil)
+                print("logged out")
+            }else {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Failed", message: "Could not log out. Try again", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(action)
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
         
     }
     
