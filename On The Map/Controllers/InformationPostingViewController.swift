@@ -22,6 +22,11 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    
     @IBAction func findLocationTapped(_ sender: Any) {
         guard let location = locationTextField.text else {return}
         findGeocode("\(location)")

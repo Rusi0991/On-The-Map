@@ -66,7 +66,7 @@ struct Auth {
         }
     }
     
-     class func taskForGetRequest<ResponseType : Decodable>(url : URL, response : ResponseType.Type, completion : @escaping(ResponseType?, Error?) -> Void) -> URLSessionTask {
+    @discardableResult class func taskForGetRequest<ResponseType : Decodable>(url : URL, responseType : ResponseType.Type, completion : @escaping(ResponseType?, Error?) -> Void) -> URLSessionTask {
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {
                 DispatchQueue.main.async {
@@ -137,10 +137,11 @@ struct Auth {
         task.resume()
     }
     
-    class func getStudentsLocations(completion : @escaping( [StudentLocation], Error? ) -> Void){
-        taskForGetRequest(url: Endpoints.studentLocation.url, response: StudentLocationResults.self) { response, error in
+    class func getStudentsLocations(completion : @escaping([StudentLocation], Error? ) -> Void){
+        taskForGetRequest(url: Endpoints.studentLocation.url, responseType: StudentLocationResults.self) { (response, error) in
             if let response = response {
                 completion(response.results, nil)
+                print(response)
                 
             } else {
                 completion([], error)
@@ -149,7 +150,7 @@ struct Auth {
     }
     
     class func getPublicUserData(completion : @escaping(String?, String?, Error?) -> Void){
-        taskForGetRequest(url: Endpoints.publicUserData.url, response: PublicUserData.self) { response, error in
+        taskForGetRequest(url: Endpoints.publicUserData.url, responseType: PublicUserData.self) { response, error in
             if let response = response{
                 completion(response.firstName, response.lastName, nil)
                 print("getting user data completed")
@@ -298,6 +299,5 @@ struct Auth {
         }
         
         task.resume()
-}
-
+    }
 }
