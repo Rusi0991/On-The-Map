@@ -12,6 +12,10 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var locationTextField: UITextField!
     
     @IBOutlet weak var linkTextField: UITextField!
+    
+    @IBOutlet weak var findLocationButton: UIButton!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var latitude : Double = 0.0
     var longitude : Double = 0.0 // -> (CLLocationCoordinate2D(latitude:Double, logitude: Double))
     
@@ -19,6 +23,7 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         locationTextField.delegate = self
         linkTextField.delegate = self
+        activityIndicator.isHidden = true
         hideKeyboardWhenTappedAround()
     }
     
@@ -45,7 +50,7 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
     }
     
     func findGeocode(_ address: String) {
-        
+        self.activityIndicator(true)
         CLGeocoder().geocodeAddressString(address) { (placemark, error)
             in
             if error == nil {
@@ -67,7 +72,7 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
                 self.present(alert, animated: true, completion: nil)
                 print("geocode error")
             }
-
+            self.activityIndicator(false)
 }
     }
     
@@ -135,4 +140,24 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         view.frame.origin.y = 0
     }
     
+    func activityIndicator(_ running : Bool){
+        
+        if running {
+            DispatchQueue.main.async {
+                self.activityIndicator.startAnimating()
+            }
+        }else {
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+            }
+        }
+        
+        locationTextField.isEnabled = !running
+        linkTextField.isEnabled = !running
+        findLocationButton.isEnabled = !running
+        
+        activityIndicator.isHidden = !running
+    
+    
+}
 }

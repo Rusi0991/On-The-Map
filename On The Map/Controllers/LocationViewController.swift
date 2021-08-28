@@ -10,6 +10,8 @@ import MapKit
 
 class LocationViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var finishButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var link : String = ""
     var location : String = ""
@@ -20,6 +22,7 @@ class LocationViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         mapView.delegate = self
         createMapAnnotation()
+        activityIndicator.isHidden = true
         // Do any additional setup after loading the view.
     }
     
@@ -37,7 +40,7 @@ class LocationViewController: UIViewController, MKMapViewDelegate {
     }
     */
     @IBAction func finishButtonTapped(_ sender: Any) {
-        
+        setActivityIndicator(true)
         Student.getPublicUserData(completion: handlePublicUserData(firstName:lastName:error:))
     }
     
@@ -50,7 +53,7 @@ class LocationViewController: UIViewController, MKMapViewDelegate {
         }
     
     func handlePostStudentLocation(success: Bool, error: Error?){
-        
+        setActivityIndicator(false)
         if success {
             Student.User.location = location
             print(Student.User.location)
@@ -91,6 +94,22 @@ class LocationViewController: UIViewController, MKMapViewDelegate {
             pinView?.annotation = annotation
         }
         return pinView
+    }
+    
+    func setActivityIndicator(_ running : Bool){
+        
+        if running {
+            DispatchQueue.main.async {
+                self.activityIndicator.startAnimating()
+            }
+        }else {
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+            }
+        }
+        
+        finishButton.isEnabled = !running
+        activityIndicator.isHidden = !running
     }
     
     }
