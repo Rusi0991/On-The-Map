@@ -19,11 +19,12 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         locationTextField.delegate = self
         linkTextField.delegate = self
-        
+        hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = true
+        hideKeyboardWhenTappedAround()
     }
     
     
@@ -85,6 +86,8 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
+    
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == locationTextField{
         textField.resignFirstResponder()
@@ -92,4 +95,6 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
+    
+    
 }

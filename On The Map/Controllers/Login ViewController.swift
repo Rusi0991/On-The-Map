@@ -14,12 +14,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     // Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
         hideKeyboardWhenTappedAround()
+        activityIndicator.isHidden = true
         navigationController?.tabBarController?.tabBar.isHidden = true
         
     }
@@ -38,7 +41,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 
             }
         }else {
-            
+            setLoggingIn(true)
                 Student.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLoginResponse(success:error:))
             }
        
@@ -46,6 +49,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
+        setLoggingIn(true)
         UIApplication.shared.open(Student.Endpoints.webAuth.url, options: [:], completionHandler: nil)
     }
     
@@ -85,6 +89,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
             passwordTextField.becomeFirstResponder()
         }
         return true
+    }
+    
+    func setLoggingIn(_ loggingIn : Bool){
+        
+        if loggingIn {
+            DispatchQueue.main.async {
+                self.activityIndicator.startAnimating()
+            }
+        }else {
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+            }
+        }
+        
+        emailTextField.isEnabled = !loggingIn
+        passwordTextField.isEnabled = !loggingIn
+        loginButton.isEnabled = !loggingIn
+        signUpButton.isEnabled = !loggingIn
+        activityIndicator.isHidden = !loggingIn
     }
     
 }
